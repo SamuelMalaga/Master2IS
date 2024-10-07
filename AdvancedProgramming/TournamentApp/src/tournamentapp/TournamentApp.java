@@ -21,6 +21,7 @@ public class TournamentApp {
         Team lyon = new Team("Lyon", "France");
         Team pumas = new Team("Pumas", "Mexico");
         Team marseille = new Team("Marseille", "France");
+        Team vasco = new Team("Vasco", "Brasil");
         System.out.println("-------------------AllToAllTournament");
         //EliminationMatch testMatch = new EliminationMatch(cruzeiro,lyon);
         
@@ -36,10 +37,8 @@ public class TournamentApp {
         ChampTournament.inviteTeam(lyon);
         ChampTournament.inviteTeam(pumas);
         ChampTournament.inviteTeam(marseille);
+        ChampTournament.inviteTeam(vasco);
         ChampTournament.playMatches();
-        //System.out.println("ELIMINATION MATCH TEST");
-        //testMatch.playMatch();
-        //System.out.println(testMatch);
     }
     
 }
