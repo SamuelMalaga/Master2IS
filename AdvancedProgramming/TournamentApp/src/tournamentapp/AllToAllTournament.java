@@ -31,8 +31,12 @@ public class AllToAllTournament extends Tournament {
         for (Match m: this.playedMatches)
             str+=m+"\n";
         
-        if (this.isPlayed)
-            str+="Winner :"+this.winner();
+        if (this.isPlayed){
+            str+="Winner :"+this.winner()+"\n";
+            Team winner = this.winner();
+            str+="IndexOfWinner :" + this.invitedTeams.indexOf(winner) + "\n";
+            str+="Points of Winner :"+this.points.get(this.invitedTeams.indexOf(winner));
+        }   
         return str;
     }
 
@@ -82,5 +86,32 @@ public class AllToAllTournament extends Tournament {
             }
         }
         return winner;
+    }
+    
+    public Team runnerUp(){
+        System.out.println("RUNNER UP LOGIC all teams");
+        for(Team t: this.invitedTeams){
+            int teamIndex = this.invitedTeams.indexOf(t);
+            System.out.println("Team "+t);
+            System.out.println("Points "+this.points.get(teamIndex));    
+        }
+        System.out.println("\n RUNNER UP LOGIC losers");
+        Team winner = this.winner();
+        int winnerIndex = this.invitedTeams.indexOf(winner);
+        ArrayList<Team> losers = this.invitedTeams;
+        losers.remove(winnerIndex);
+        ArrayList<Integer> losersPoints = this.points;
+        losersPoints.remove(winnerIndex);
+        Team runnerUp = null;
+        int maxscore = 0;
+        for (int i=0; i<losersPoints.size();i++)
+        {
+            if (losersPoints.get(i) > maxscore)
+            {
+                maxscore = losersPoints.get(i);
+                runnerUp = losers.get(i);
+            }
+        }
+        return runnerUp;
     }
 }
